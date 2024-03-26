@@ -12,3 +12,6 @@ The game also includes validation for: 1. Bad input from the user upon entering 
 regarding cell coordinates. 3. User entering coordinates for a cell that is already occupied. 
 
 To exit the user can type at any point "EXIT" command.
+
+# Game Preview
+![](https://github.com/aandreigeorge/Tic-Tac-Toe-with-AI/blob/main/TicTacToeGIFPreview.gif)
