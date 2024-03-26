@@ -180,7 +180,7 @@ class AiPlayer extends PlayerFactory {
             for (int j = 0; j < board.length; j++) {
                 if (!board[i][j].isOccupied()) {
                     board[i][j].setValue(isMaximizingPlayer ? 'X' : 'O');
-                    int score = minimax(board, !isMaximizingPlayer);
+                    int score = minimax(board, 0, !isMaximizingPlayer);
                     board[i][j].setValue(' ');
 
                     if ((isMaximizingPlayer && score > bestScore) || (!isMaximizingPlayer && score < bestScore)) {
@@ -194,16 +194,16 @@ class AiPlayer extends PlayerFactory {
         return bestMove;
     }
 
-    private int minimax(Cell[][] board, boolean isMaximizingPlayer) {
+    private int minimax(Cell[][] board, int depth, boolean isMaximizingPlayer) {
 
 
         if (TIC_TAC_TOE_BOARD.gameDraw()) {
             return 0;
         } else if (TIC_TAC_TOE_BOARD.gameWon()) {
             if (TIC_TAC_TOE_BOARD.getWinningPlayer() == 'X') {
-                return +10;
+                return 10 - depth;
             } else if (TIC_TAC_TOE_BOARD.getWinningPlayer() == 'O') {
-                return -10;
+                return depth - 10;
             }
         }
 
@@ -215,7 +215,7 @@ class AiPlayer extends PlayerFactory {
 
                     char currentPlayer = isMaximizingPlayer ? 'X' : 'O';
                     rowOfCells[column].setValue(currentPlayer);
-                    int currentScore = minimax(board, !isMaximizingPlayer);
+                    int currentScore = minimax(board, depth + 1, !isMaximizingPlayer);
                     rowOfCells[column].setValue(' ');
 
                     if (isMaximizingPlayer) {
