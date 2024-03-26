@@ -45,6 +45,7 @@ public class TicTacToeGame {
 
     private void playGame() {
 
+        ConsoleCleaner.cleanConsole();
         ticTacToeBoard.printBoard();
 
         do {

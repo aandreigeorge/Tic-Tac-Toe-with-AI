@@ -91,6 +91,7 @@ class Board {
 
     private void updateGrid(int row, int column, char playerSymbol) {
 
+        ConsoleCleaner.cleanConsole();
         BOARD[row][column].setValue(playerSymbol);
         printBoard();
     }
